@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Nova rezervacija{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="tip">U jednom smjeru:
+    <input type="checkbox" name="tip" id="tip" checked></label>
+    <label for="polazna_lokacija">Polazna lokacija:
+        <select name="polazna_lokacija" id="polazna_lokacija" required>
+        {% for lokacija in lokacije %}
+            <option value="{{ lokacija.id }}">{{ lokacija.naziv }}</option>
+        {% endfor %}
+    </select></label>
+    <label for="dolazna_lokacija">Dolazna lokacija:
+        <select name="dolazna_lokacija" id="dolazna_lokacija" required>
+        {% for lokacija in lokacije %}
+            <option value="{{ lokacija.id }}">{{ lokacija.naziv }}</option>
+        {% endfor %}
+    </select></label>
+      <label for="datum_polaska">Datum polaska:
+          <input type="date" name="datum_polaska" id="datum_polaska" required />
+      </label>
+    <input type="submit" value="Rezerviraj">
+  </form>
+{% endblock %}
